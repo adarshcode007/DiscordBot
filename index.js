@@ -19,10 +19,14 @@ client.on("messageCreate", async (message) => {
   // console.log(message.content);
 
   if (message.author.bot) return;
+  const req = message.content.split(" ")[0];
 
   try {
-    if (message.content.startsWith("reply")) {
-      const prompt = message.content.split("reply")[1];
+    if (
+      message.content.startsWith("reply") ||
+      message.content.startsWith("Reply")
+    ) {
+      const prompt = message.content.split(req)[1];
       console.log(prompt);
 
       const response = await ai.models.generateContent({
