@@ -27,7 +27,7 @@ client.on("messageCreate", async (message) => {
       message.content.startsWith("Reply")
     ) {
       const prompt = message.content.split(req)[1];
-      console.log(prompt);
+      // console.log(prompt);
 
       const response = await ai.models.generateContent({
         model: "gemini-2.5-flash",
