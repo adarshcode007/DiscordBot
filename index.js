@@ -57,7 +57,10 @@ client.on("interactionCreate", (interaction) => {
   interaction.reply("Pong!!");
 });
 
-client.login(process.env.DISCORD_TOKEN);
+client
+  .login(process.env.DISCORD_TOKEN)
+  .then(() => console.log("✅ Login successful"))
+  .catch((err) => console.error("❌ Login failed:", err));
 
 const app = express();
 const PORT = process.env.PORT || 3000;
