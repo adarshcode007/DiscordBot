@@ -7,17 +7,17 @@ import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
-// Bot ready event
-client.once("ready", () => {
-  console.log(`✅ Logged in as ${client.user.tag}`);
-});
-
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.MessageContent,
   ],
+});
+
+// Bot ready event
+client.once("ready", () => {
+  console.log(`✅ Logged in as ${client.user.tag}`);
 });
 
 client.on("messageCreate", async (message) => {
