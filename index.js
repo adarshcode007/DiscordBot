@@ -7,6 +7,11 @@ import { GoogleGenAI } from "@google/genai";
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
+// Bot ready event
+client.once("ready", () => {
+  console.log(`✅ Logged in as ${client.user.tag}`);
+});
+
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -16,9 +21,6 @@ const client = new Client({
 });
 
 client.on("messageCreate", async (message) => {
-  // console.log(message);
-  // console.log(message.content);
-
   if (message.author.bot) return;
   const req = message.content.split(" ")[0];
 
@@ -55,7 +57,7 @@ client.on("interactionCreate", (interaction) => {
   interaction.reply("Pong!!");
 });
 
-client.login(process.env.token);
+client.login(process.env.DISCORD_TOKEN);
 
 const app = express();
 const PORT = process.env.PORT || 3000;
